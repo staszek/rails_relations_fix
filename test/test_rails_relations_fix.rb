@@ -17,14 +17,19 @@ class TestRailsRelationFix< Test::Unit::TestCase
       end 
     end
     
-    context "Association bug tests" do
-      setup do
-        @movies = Array.new(@user.movies)
-      end
-      
+    context "Association bug tests" do      
       should "return empty collection after destroy its only movie" do
         @user.movies.destroy(@titanic)
         assert_equal([], @user.movies)
+      end
+    end
+    
+    context "Counter_cache for polymorhpic association bug test" do
+      should "Update movies_count column after adding movie by <<" do
+        @user.movies << Movie.create(:name => "Matrix")
+        assert_equal(2, @user.reload.movies_count)
+        @titanic.destroy
+        assert_equal(1, @user.reload.movies_count)
       end
     end
   end
