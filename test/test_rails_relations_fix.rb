@@ -25,11 +25,18 @@ class TestRailsRelationFix< Test::Unit::TestCase
     end
     
     context "Counter_cache for polymorhpic association bug test" do
-      should "Update movies_count column after adding movie by <<" do
+      should "Update movies_count column after adding movie by << or destroing" do
         @user.movies << Movie.create(:name => "Matrix")
         assert_equal(2, @user.reload.movies_count)
         @titanic.destroy
         assert_equal(1, @user.reload.movies_count)
+      end
+      
+      should "Refresh size after adding movie by << or destroing" do
+        @user.movies << Movie.create(:name => "Matrix")
+        assert_equal(2, @user.movies.size)
+        @titanic.destroy
+        assert_equal(1, @user.movies.size)
       end
     end
   end
