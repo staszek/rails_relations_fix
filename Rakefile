@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "rails_relations_fix"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = "Fix for 2 rails bugs"
+    gem.description = "Fix for 2 rails bugs. #3005 Counter_cache and polymorhic association. #???? Not refreshing association after destroy"
     gem.email = "stanislaw.kolarzowski@gmail.com"
     gem.homepage = "http://github.com/staszek/rails_relations_fix"
     gem.authors = ["Stanisław Kolarzowski"]
