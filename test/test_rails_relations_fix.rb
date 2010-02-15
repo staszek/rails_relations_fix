@@ -19,6 +19,7 @@ class TestRailsRelationFix< Test::Unit::TestCase
     
     context "Association bug tests" do      
       should "return empty collection after destroy its only movie" do
+        assert_equal([@titanic], @user.movies)
         @user.movies.destroy(@titanic)
         assert_equal([], @user.movies)
       end
