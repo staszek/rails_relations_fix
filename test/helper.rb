@@ -11,6 +11,7 @@ require "active_record/associations"
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
+
 require 'rails_relations_fix'
 
 ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database => ":memory:")
