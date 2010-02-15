@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
      "lib/rails_relations_fix.rb",
      "lib/rails_relations_fix/association.rb",
      "lib/rails_relations_fix/counter_cache.rb",
+     "rails_relations_fix.gemspec",
      "test/helper.rb",
      "test/test_rails_relations_fix.rb"
   ]

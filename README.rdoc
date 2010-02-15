@@ -2,10 +2,10 @@
 
 This is fix for 2 rails bugs:
   
-* Counter_cache is not updated in polymorhpic assocation [https://rails.lighthouseapp.com/projects/8994/tickets/3005-counter_cache-not-updated-if-polymorphic-true-when-assigning-association ]
-* association.destroy does not refresh association object
+* Counter_cache is not updated in polymorhpic assocation https://rails.lighthouseapp.com/projects/8994/tickets/3005-counter_cache-not-updated-if-polymorphic-true-when-assigning-association 
+* destroy for association collection does not delete object from parent array https://rails.lighthouseapp.com/projects/8994-ruby-on-rails/tickets/3964-destroy-for-association-collection-does-not-delete-object-from-parent-array
 
 == Copyright
 
-Used patch made by Hsume2 [http://github.com/hsume2]
-Copyright (c) 2010 Stanisław Kolarzowski. See LICENSE for details.
+* Used patch made by Hsume2 [http://github.com/hsume2]
+* Copyright (c) 2010 Stanisław Kolarzowski. See LICENSE for details.
