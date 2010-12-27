@@ -7,14 +7,14 @@ module ActiveRecord
     def self.define_callback_methods
       base = ActiveRecord::Base
       [:create, :update, :destroy].each do |method|
-        # Due to using aliast_method_chain for methods like method_name_with_callbacks they are not reading from this file. 
+        # Due to using aliast_method_chain for methods like method_name_with_callbacks they are not reading from this file.
         # They need to be reloaded.
         base.send :alias_method, method, "#{method}_without_callbacks".to_sym
         base.send :alias_method_chain, method, :callbacks
       end
       base.define_callbacks *NEW_CALLBACKS
     end
-    
+
     def create_with_callbacks #:nodoc:
       return false if callback(:before_create) == false
       return false if callback(:before_add) == false if changed?
@@ -23,7 +23,7 @@ module ActiveRecord
       callback(:after_create)
       result
     end
-    
+
     def update_with_callbacks(*args) #:nodoc:
       return false if callback(:before_update) == false
       return false if callback(:before_add) == false if changed?
@@ -32,7 +32,7 @@ module ActiveRecord
       callback(:after_update)
       result
     end
-    
+
     def destroy_with_callbacks #:nodoc:
       return false if callback(:before_destroy) == false
       return false if callback(:before_remove) == false
@@ -41,24 +41,24 @@ module ActiveRecord
       callback(:after_destroy)
       result
     end
-    
+
     def before_add()    end #:nodoc:
     def after_add()     end #:nodoc:
     def before_remove() end #:nodoc:
     def after_remove()  end #:nodoc:
-    
+
   end
-  
+
   module Associations
     module ClassMethods
       def add_counter_cache_callbacks(reflection)
+
         cache_column = reflection.counter_cache_column
 
         method_name = "belongs_to_counter_cache_after_add_for_#{reflection.name}".to_sym
         define_method(method_name) do
+          association = self.subject_type.constantize.find(self.subject_id) rescue nil
 
-          association = send(reflection.name, true) rescue nil
-          
           if send("#{reflection.primary_key_name}_changed?") && send("#{reflection.primary_key_name}_change") != send("#{reflection.primary_key_name}_change").compact
             association.class.increment_counter(cache_column, association.id) unless association.nil?
           end
@@ -78,6 +78,6 @@ module ActiveRecord
       end
     end
   end
-  
+
 end
 
