@@ -57,7 +57,7 @@ module ActiveRecord
 
         method_name = "belongs_to_counter_cache_after_add_for_#{reflection.name}".to_sym
         define_method(method_name) do
-          association = self.subject_type.constantize.find(self.subject_id) rescue nil
+          association = send(reflection.name).reload rescue nil
 
           if send("#{reflection.primary_key_name}_changed?") && send("#{reflection.primary_key_name}_change") != send("#{reflection.primary_key_name}_change").compact
             association.class.increment_counter(cache_column, association.id) unless association.nil?
