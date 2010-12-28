@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{rails_relations_fix}
-  s.version = "1.1.0"
+  s.version = "1.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stanis\305\202aw Kolarzowski"]
-  s.date = %q{2010-12-27}
+  s.date = %q{2010-12-28}
   s.description = %q{Fix for 2 rails bugs. #3005 Counter_cache and polymorhic association. #3964 Not refreshing association after destroy}
   s.email = %q{stanislaw.kolarzowski@gmail.com}
   s.extra_rdoc_files = [
